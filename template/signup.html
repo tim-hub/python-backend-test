@@ -2,19 +2,19 @@
 {% block content %}
 	<form>
 		<label> username:
-			<input type="text" name="username">
+			<input type="text" name="username"> {{ name_notice }}
 		</label>
 		<br/>
 		<label> password:
-			<input type="password" name="password">
+			<input type="password" name="password"> {{ password_notice }}
 		</label>
 		<br/>
 		<label> again:
-			<input type="password" name="verify">
+			<input type="password" name="verify"> {{ verify notice }}
 		</label>
 		<br/>
 		<label> email(optional):
-			<input type="text" name="email">
+			<input type="text" name="email"> {{ email notice }}
 		</label>
 		<br/>
 		<input type="submit" value="Sign Up">

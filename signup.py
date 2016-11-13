@@ -2,12 +2,18 @@ import os
 import webapp2
 import jinja2
 import string
+import re
 
 template_dir= os.path.join( \
     os.path.dirname(__file__),'template')
 jinja_env=jinja2.Environment( \
     loader=jinja2.FileSystemLoader(template_dir), \
     autoescape=True)
+
+
+USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
+def valid_username(username):
+    return USER_RE.match(username)
 
 class Handler(webapp2.RequestHandler):
 
@@ -21,30 +27,12 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write( self.render_str(template, **kw))
 
-class Rot13(Handler):
-	def rot13_tran(self, str):
-		# new_content= string.maketrans( 
-		#     "ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz", 
-		#     "NOPQRSTUVWXYZnopqrstuvwxyzABCDEFGHIJKLMabcdefghijklm")
-		new_content=str.encode('rot13')
-		return new_content
-
-	def get(self):
-		self.render("rot13.html")
-
-	def post(self):
-		original_content=self.request.get("text")
-		new_content=self.rot13_tran(original_content)
-		self.render("rot13.html", \
-			new_content=new_content )
-
 class SignUp(Handler):
 	def get(self):
 		self.render("signup.html")
 
 	def post(self):
 
-app = webapp2.WSGIApplication([('/', Rot13),
-								('/signup', SignUp) 
+app = webapp2.WSGIApplication([('/', SignUp),
                                ],
                               debug=True)
