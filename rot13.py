@@ -44,5 +44,5 @@ class SignUp(Handler):
 
 	
 
-app = webapp2.WSGIApplication([('/', Rot13),],
+app = webapp2.WSGIApplication([('/rot13', Rot13),],
                               debug=True)

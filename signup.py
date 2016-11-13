@@ -31,7 +31,7 @@ class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.write(*a, **kw)
 
-    def render_str(slef, template, **kw):
+    def render_str(self, template, **kw):
         t=jinja_env.get_template(template)
         return t.render(kw)
 
