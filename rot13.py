@@ -42,9 +42,7 @@ class SignUp(Handler):
 	def get(self):
 		self.render("signup.html")
 
-	def post(self):
+	
 
-app = webapp2.WSGIApplication([('/', Rot13),
-								('/signup', SignUp) 
-                               ],
+app = webapp2.WSGIApplication([('/', Rot13),],
                               debug=True)

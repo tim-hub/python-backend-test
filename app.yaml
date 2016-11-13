@@ -3,7 +3,11 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /.*
+- url: /
+  script: rot13.app
+- url: /signup
+  script: signup.app #rot13.app
+- url: /welcome
   script: signup.app
 
 libraries:
