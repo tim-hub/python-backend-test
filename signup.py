@@ -70,7 +70,7 @@ class SignUp(Handler):
         pwd2=""
         pwd2_notice=""
         if pwd!="":
-            if pwd2_input==pwd:
+            if pwd2_input==pwd_input:
                 pwd2=pwd2_input
                 flag_int=flag_int+1
             else:
@@ -81,7 +81,7 @@ class SignUp(Handler):
         if (email_input!="" and valid_email(email_input)) \
             or email_input=="" :
             email=email_input
-            flag_int=flag_int+1
+            # flag_int=flag_int+1
         else:
             email_notice="That was not a valid email address."
             flag_int=flag_int-1
